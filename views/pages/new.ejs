@@ -1,0 +1,47 @@
+<!-- !calling the layout function and providing the address of layout directory and boilerplate.ejs is a file template file-->
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+  <h1 class="text-center">Add a Discussion</h1>
+  <div class="col-6 offset-3">
+    <form
+      action="/discussionPage"
+      method="POST"
+      novalidate
+      class="validated-form"
+    >
+      <div class="mb-3">
+        <label class="form-label" for="title">Discussion Topic</label>
+        <input
+          class="form-control"
+          type="text"
+          id="title"
+          name="discussion[title]"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <div class="mb-3">
+        <div class="input-group"></div>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea
+          class="form-control"
+          type="text"
+          id="description"
+          name="discussion[description]"
+          rows="3"
+          required
+        ></textarea>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-success">Add Discussion Topic</button>
+      </div>
+    </form>
+    <a href="/discussionList">All Discussion List</a>
+  </div>
+</div>

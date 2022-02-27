@@ -1,0 +1,60 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+  <div class="col-6 offset-3">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><%= discussion.title%></h5>
+        <p class="card-text"><%= discussion.description%></p>
+      </div>
+      <div class="card-body">
+        <a class="card-link btn btn-warning" href="/discussionList/">Go Back</a>
+        <a
+          class="card-link btn btn-info"
+          href="/discussionList/<%=discussion._id%>/edit"
+          >Edit</a
+        >
+
+        <form
+          class="d-inline validated-form"
+          action="/discussionList/<%=discussion._id %>?_method=DELETE"
+          method="POST"
+        >
+          <button class="btn btn-danger">Delete</button>
+        </form>
+
+        <div class="card mb-3 mt-3">
+            <div class="card-body">
+          <form action="/discussionList/<%=discussion._id%>/reply" method="POST" class="mb-3 validated-form" novalidate>
+            <div class="mb-3">
+              <label class="form-label" for="body">Reply</label>
+              <textarea
+                name="reply[body]"
+                id="body"
+                rows="3"
+                cols="30"
+                class="form-control"
+                required
+                
+              >
+              </textarea>
+            </div>
+            <button class="btn btn-success">Submit</button>
+          </form>
+          </div>
+        </div>
+
+        <% for(let reply of discussion.replies) { %>
+        <div class="card mb-3">
+            <div class="card-body">
+            <p> <strong>Name:</strong>  <%= reply.body %></p>
+            <form action="/discussionList/<%=discussion._id%>/replies/<%=reply._id %>?_method=DELETE" method="POST">
+              <button class="btn btn-sm btn-danger">Delete</button>
+            </form>
+            </div>
+        </div>
+        <% } %> 
+      </div>
+    </div>
+  </div>
+</div>

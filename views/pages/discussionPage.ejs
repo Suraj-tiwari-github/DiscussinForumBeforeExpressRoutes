@@ -1,0 +1,25 @@
+<% layout('layouts/boilerplate') %>
+
+<h1 class="text-center">All Discussions Page</h1>
+
+<div>
+  <a href="/discussion/new">New Discussion</a>
+  <br /><br />
+</div>
+
+<% for (let diss of discussion) {%>
+<div class="card" mb-3 p-3>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card-body">
+
+        <h5 class="card-title"><%=diss.title %></h5>
+        <p class="card-text"><%=diss.description %></p>
+        <a class="btn btn-primary" href="/discussionList/<%= diss._id %>">View description </a>
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+<%} %>

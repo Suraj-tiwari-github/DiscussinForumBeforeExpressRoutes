@@ -1,0 +1,8 @@
+<% layout('layouts/boilerplate') %>
+    <h1>All Discussion list</h1>
+    <ul>
+        <% for(let diss of discussion) {%>
+            <li> <a href="/discussionList/<%= diss._id %>"> <%= diss.title %>  </a> </li> 
+        
+        <% } %> 
+    </ul>
